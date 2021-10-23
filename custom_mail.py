@@ -18,6 +18,7 @@ def load_applicants(filename):
         return list_from_csv
     except:
         print("FATAL: applicants.csv file not found")
+        exit()
 
 def get_text(filename):
     try:
@@ -41,7 +42,7 @@ if __name__ == "__main__":
         exit()
 
     else:
-        applicants = load_applicants("../applicants.csv")
+        applicants = load_applicants("applicants.csv")
         content = get_text(sys.argv[1])
         # print(content)
         # print(applicants)
