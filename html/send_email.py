@@ -7,7 +7,7 @@ from collections import defaultdict
 import termcolor
 import os
 
-os.system('color')
+# os.system('color')
 
 
 def load_applicants(filename):
