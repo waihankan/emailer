@@ -4,19 +4,10 @@ import json
 import csv
 from json_html_writer import *
 from collections import defaultdict
+import termcolor
+import os
 
-
-# load applicants names
-# def load_applicants(filename):
-#     with open(filename, mode="r") as f:
-#         csv_reader = csv.reader(f)
-#         list_from_csv = []
-        
-#         for row in csv_reader:
-#             for string in row:
-#                 list_from_csv.append(string.replace(" ", ""))
-#     print(list_from_csv)
-#     return list_from_csv
+os.system('color')
 
 
 def load_applicants(filename):
@@ -29,9 +20,7 @@ def load_applicants(filename):
 
     name_list = columns['Name']
     email_list = columns['Email']
-    zip_iterator = zip(name_list, email_list)
-    applicants = dict(zip_iterator)
-
+    applicants = dict(zip(name_list, email_list))
     return name_list, email_list, applicants
 
 
@@ -50,38 +39,34 @@ def mail(invitation, result_type, data, email):
         # Interview Invitation
         if invitation == "0":
             yag.send(to=email, cc="cookieacademy2020@gmail.com", subject=data["subject"]["IL"], contents=data["body"]["interview_invitation"])
-            print("sent interview invitation")
+            print(termcolor.colored("Sent Interview Invitation", "cyan"))
             
         # Result
         elif invitation == "1":
             # discord invitation
             if result_type == "0":
                 yag.send(to=email, cc="cookieacademy2020@gmail.com", subject=data["subject"]["IR"], contents=data["body"]["discord_invitation"])
-                print("sent discord invitation")
+                print(termcolor.colored("Sent Discord Invitation", "cyan"))
             # rejection letter
             else:
                 yag.send(to=email, cc="cookieacademy2020@gmail.com", subject=data["subject"]["IR"], contents=data["body"]["reject_letter"])
-                print("sent rejection letter")
+                print(termcolor.colored("Sent Rejection Letter", "cyan"))
 
-        print("Email sent successfully")
     except:
-        print("Error, email was not sent")
+        print(termcolor.colored("Error, email was not sent", "red", attrs=["bold"]))
 
 
-def confirm(email_list, invitation, result_type, data):
-    print("--------------------------------------------------")
-    print("Recipents: ", end = "")
-    print(email_list)
-    print("--------------------------------------------------")
+def confirm(email_list, invitation, result_type):
+    print("----------------------------------------------------------------")
+    print(termcolor.colored(f"Recipents: {email_list}", "yellow", attrs=["bold"]))
+    print("----------------------------------------------------------------")
     if invitation == "0":
-        print("Type of Letter: Invitation Letter")
-        print("Review of the email: ")
-        # print(data["body"]["interview_invitation"])
+        print(termcolor.colored("Type of Letter: Invitation Letter", "blue"))
     else:
         if result_type == "0":
-            print("Type of Letter: Discord Invitation")
+            print(termcolor.colored("Type of Letter: Discord Invitation", "blue"))
         else: 
-            print("Type of Letter: Rejection Letter")
+            print(termcolor.colored("Type of Letter: Rejection Letter", "blue"))
 
     answer = ""
     while answer not in ["y", "n"]:
@@ -96,8 +81,8 @@ if __name__ == "__main__":
     if invitation == "1":
         result_type = input("Press 0 for Discord Invitation, 1 for Rejection Letter: ")
         if (result_type != "0" and result_type != "1"):
-            print('error')
-            print("Abort due to wrong input")
+            print(termcolor.colored("Error", "red", attrs=["bold"]))
+            print(termcolor.colored("Abort due to wrong input", "red", attrs=["bold"]))
             quit()
 
     name_list, email_list, applicants = load_applicants("applicants.csv")
@@ -108,51 +93,33 @@ if __name__ == "__main__":
     if (invitation == "0"):
         # update_config()
         position, doc_link, title, date, time, reject_letter, discord_invitation = update_config()
-        # print(position)
-        # print(doc_link)
-        # print(title)
-        # print(date)
-        # print(time)
+        print("----------------------------------------------------------------")
+        print("Position     : ", position)
+        print("Document Link: ", doc_link)
+        print("Title        : ", title)
+        print("Date         : ", date)
+        print("Time         : ", time)
 
-        for name, email in applicants.items():
-            # print("=============")
-            # print(name)
-            # print(email)
-            # print(applicants)
-            # print("=============")
-
-            html_text(position, doc_link, title, date, time, name, reject_letter, discord_invitation)
-            # load JSON file    
-            data = load_json("jsonfile.json")
-
-            if confirm(email_list, invitation, result_type, data):
+        if confirm(email_list, invitation, result_type):
+            for name, email in applicants.items():
+                print("===========================")
+                print(termcolor.colored(f"Name : {name}", "cyan"))
+                print(termcolor.colored(f"Email: {email}", "cyan"))
+                html_text(position, doc_link, title, date, time, name, reject_letter, discord_invitation)
+                # load JSON file    
+                data = load_json("jsonfile.json")
                 mail(invitation, result_type, data, email)
-            else:
-                print("Abort")
+        else:
+            print(termcolor.colored("Abort", "red", attrs=["bold"]))
 
     elif (invitation == "1"):
         data = load_json("jsonfile.json")
         if confirm(email_list, invitation, result_type, data):
             mail(invitation, result_type, data, email)
-        # pass
 
     else:
-        print("Abort due to wrong input")
+        print(termcolor.colored("Abort due to wrong input", "red", attrs=["bold"]))
         quit()
-        
 
-    # for name, email in applicants.items():
-    #     print("=============")
-    #     print(name)
-    #     print(email)
-    #     print(applicants)
-    #     print("=============")
-
-    #     html_text(name)
-    #     # load JSON file    
-    #     data = load_json("jsonfile.json")
-
-    # if confirm(email_list, invitation, result_type, data):
-    #     mail(invitation, result_type, data, email)
-    # else:
-    #     print("Abort")
+    print("===========================")
+    print(termcolor.colored("********* SUCCESS *********", "green", attrs=["bold"]))

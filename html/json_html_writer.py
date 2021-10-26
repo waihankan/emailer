@@ -44,11 +44,12 @@ def update_config():
     cookieacademy19@gmail.com"""
 
     # Request User Data for Interview Invitation
-    position = input("Enter the Position of Applicants: ")
-    doc_link = input("Enter the Google Document Link: ")
-    title = input("Enter the Interview Title: ")
-    date = input("Enter the Interview Date (eg. October 10): ")
-    time = input("Enter the Interview Time (eg. 2:00 to 3:00 pm): ")
+    print("----------------------------------------------------------------")
+    position = input("Enter the Position of Applicants              : ")
+    doc_link = input("Enter the Google Document Link                : ")
+    title    = input("Enter the Interview Title                     : ")
+    date     = input("Enter the Interview Date (eg. October 10)     : ")
+    time     = input("Enter the Interview Time (eg. 2:00 to 3:00 pm): ")
 
     return position, doc_link, title, date, time, reject_letter, discord_invitation
 
