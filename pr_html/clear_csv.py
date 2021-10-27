@@ -9,4 +9,3 @@ except:
 
 file = open("pr_applicants.csv", "w+")
 file.close()
-
