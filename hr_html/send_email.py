@@ -87,12 +87,13 @@ if __name__ == "__main__":
 
     name_list, email_list, applicants = load_applicants("applicants.csv")
 
-    # configure JSON file
-    # if the email is for interview, update the config file
-    # else don't need to update
     if (invitation == "0"):
-        # update_config()
-        position, doc_link, title, date, time, reject_letter, discord_invitation = update_config()
+        print("----------------------------------------------------------------")
+        position = input("Enter the Position of Applicants              : ")
+        doc_link = input("Enter the Google Document Link                : ")
+        title    = input("Enter the Interview Title                     : ")
+        date     = input("Enter the Interview Date (eg. October 10)     : ")
+        time     = input("Enter the Interview Time (eg. 2:00 to 3:00 pm): ")
         print("----------------------------------------------------------------")
         print("Position     : ", position)
         print("Document Link: ", doc_link)
@@ -101,21 +102,29 @@ if __name__ == "__main__":
         print("Time         : ", time)
 
         if confirm(email_list, invitation, result_type):
+            # loop for each applicant
             for name, email in applicants.items():
+                update_html(name, position, doc_link, title, date, time)
                 print("===========================")
                 print(termcolor.colored(f"Name : {name}", "cyan"))
                 print(termcolor.colored(f"Email: {email}", "cyan"))
-                html_text(position, doc_link, title, date, time, name, reject_letter, discord_invitation)
-                # load JSON file    
+                # load JSON file
                 data = load_json("jsonfile.json")
                 mail(invitation, result_type, data, email)
         else:
             print(termcolor.colored("Abort", "red", attrs=["bold"]))
 
     elif (invitation == "1"):
-        data = load_json("jsonfile.json")
         if confirm(email_list, invitation, result_type):
-            mail(invitation, result_type, data, email)
+            # loop for each applicant
+            for name, email in applicants.items():
+                update_html(name)
+                print("===========================")
+                print(termcolor.colored(f"Name : {name}", "cyan"))
+                print(termcolor.colored(f"Email: {email}", "cyan"))
+                # load JSON file
+                data = load_json("jsonfile.json")
+                mail(invitation, result_type, data, email)
 
     else:
         print(termcolor.colored("Abort due to wrong input", "red", attrs=["bold"]))
