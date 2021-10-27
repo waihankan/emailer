@@ -42,7 +42,7 @@ def confirm(applicants):
 
 
 if __name__ == "__main__":
-    applicants   = load_applicants("applicants.csv")
+    applicants   = load_applicants("pr_applicants.csv")
     topic        = input("Enter the Session Topic                       : ")
     meeting_link = input("Enter the Meeting link                        : ")
     date         = input("Enter the Interview Date (eg. October 10)     : ")

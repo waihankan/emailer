@@ -7,6 +7,6 @@ try:
 except:
     print("already removed applicants.csv")
 
-file = open("applicants.csv", "w+")
+file = open("pr_applicants.csv", "w+")
 file.close()
 

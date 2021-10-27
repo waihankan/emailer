@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+
+# This is the test file for developers !!! Do NOT use this file. 
+
 import yagmail
 
 content = ["""<!DOCTYPE html><html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" style="box-sizing:border-box; padding:0px; margin:0px"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" type="text/css" /><link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet" type="text/css" /></head>
