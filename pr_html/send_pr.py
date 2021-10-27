@@ -7,7 +7,6 @@ import os
 os.system('color')
 
 
-# load applicants names
 def load_applicants(filename):
     with open(filename, mode="r") as f:
         csv_reader = csv.reader(f)
