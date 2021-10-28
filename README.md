@@ -122,12 +122,17 @@ Here is how to use the code as of latest source code.
 
 <p float="left" align="center">
   <img src="/assets/interview.png" width="250"/> &nbsp;
-  <img src="/assets/sorry.png" width="250" /> &nbsp;
-  <img src="/assets/discord_invitation.png" width="250" />  
+  <img src="/assets/event.png" width="250" /> 
+</p>
+
+<p float="left" align="center">
+  <img src="/assets/discord_invitation.png" width="250" /> &nbsp;   
+  <img src="/assets/sorry.png" width="250" />
 </p>
 
 <!-- ROADMAP -->
 ## Roadmap
+
 See the [open issues](https://github.com/waihankan/emailer/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
