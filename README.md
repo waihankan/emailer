@@ -4,12 +4,11 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-<p align="center">
-<img src="https://i.imgur.com/hY9kal9.jpg" alt="Cat <3" width="500">
-<!-- PROJECT LOGO -->
+
 <br />
 <p align="center">
-   <img src="https://i.imgur.com/4TDD3yS.gif" alt="Cat <3" width="100" height="100">
+   <img src="https://i.imgur.com/jfyuaOh.png" alt="Logo" width="100"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   <img src="https://i.imgur.com/4TDD3yS.gif" alt="Cat <3" width="120" height="120">
   <h3 align="center">Emailer</h3>
   <p align="center">
     An awesome bot to send beautiful <strong> Cookie Academy</strong> templates!
