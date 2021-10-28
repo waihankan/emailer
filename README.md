@@ -114,7 +114,7 @@ Here is how to use the code as of latest source code.
 3. For **Public Relations Department**
 	- Firstly, you'll have to fill in the recipents' emails using Excel in `pr_applicants.csv` file.
 	- Run `send_pr.py` file using the command `python3 send_pr.py` and follow the insturctions provided in the program.
-	 - The program will show the progress while you're sending custom email to all the recipents. If everything runs smoothly it will show *SUCCESS* , and you are good to leave the program.
+	 - The program will show the progress while you're sending custom email to all the recipents. If everything runs smoothly it will show *Sent Invitation Successfully*, and you are good to leave the program.
 	 - Do NOT forget to run the command `python3 clear_csv.py` as soon as you finish your emailing process as it will delete all the *emails* in `applicants.csv` file.
 
 ## Demo Images
