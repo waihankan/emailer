@@ -120,6 +120,9 @@ Here is how to use the code as of latest source code.
 ## Demo Images
 
 <p float="left" align="center">
+<img src="/assets/cml.gif" /> 
+
+<p float="left" align="center">
   <img src="/assets/interview.png" width="250"/> &nbsp;
   <img src="/assets/event.png" width="250" /> 
 </p>
