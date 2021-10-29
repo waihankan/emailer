@@ -33,10 +33,10 @@ def send_mail(applicants, content):
 
 
 def confirm(applicants):
-    print(termcolor.colored(f"Recipents: {applicants}", "yellow", attrs=["bold"]))
+    print(termcolor.colored(f"Recipients: {applicants}", "yellow", attrs=["bold"]))
 
     if len(applicants) == 0:
-        print(termcolor.colored("Please enter recipents in pr_applicants.csv", "red"))
+        print(termcolor.colored("Please enter recipients in pr_applicants.csv", "red"))
     else:
         answer = ""
         while answer not in ["y", "n"]:
