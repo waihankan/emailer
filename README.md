@@ -53,21 +53,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-ANOTHER AUTOMATION SCRIPT FOR A 3 MINUTE TASK  
-
-CML Tool for sending emails to specific recipients - a script written in python
-
-_applicants.csv_: this is a csv file which stores all the recipents - currently, it's still manual, but it would be better if the data is synced with Google Sheet.
-
-_jsonfile.json_: json file to store all the letters
-
-_json_writer.py_: a module written for  _send_email.py_
-
-send_email.py: this is the main script of the code.  `python3 send_email.py`  or  `./send_email.py`  to get started.
+The script is developed for the purpose of sending mass custom html emails. However, we only provide templates for this specific Academy at the moment. Even though we do *not* support the **custom-emailing** version yet, it's possible to send your own custom template with some tweaks. The code still needs some contributions to make a GUI program and automatically fetch data from *Google Sheet*.
 
 ### Built With
 
-* [Python3.8](https://www.python.org/)
+* [Python 3.8](https://www.python.org/)
 * [yagmail](https://github.com/kootenpv/yagmail)
 * [keyring](https://pypi.org/project/keyring/)
 * [termcolor](https://pypi.org/project/termcolor/)
@@ -106,19 +96,19 @@ Here is how to use the code as of latest source code.
 1. Go to the folder `hr_html` if you are from **Human Resource Department**, `pr_html` if you are from  **Public Relations Department**, and `academic_html` if you are from **Academic Department**.
 
 2. For **Human Resource Department** 
-	 - Firstly, you'll have to fill in the applicants' names and emails using Excel in `applicants.csv` file.
+	 - Firstly, you'll have to fill in the applicants' names and emails using Excel in `hr_applicants.csv` file.
 	 - Run `send_email.py` file using the command `python3 send_email.py` and follow the insturctions provided in the program.
 	 - The program will show the progress while you're sending custom email to specific recipent. If everything runs smoothly it will show *SUCCESS* , and you are good to leave the program.
-	 - Do NOT forget to run the command `python3 clear_csv.py` as soon as you finish your emailing process as it will delete all the *names* and *emails* in `applicants.csv` file.
+	 - Do NOT forget to run the command `python3 clear_csv.py` as soon as you finish your emailing process as it will delete all the *names* and *emails* in `hr_applicants.csv` file.
 
 3. For **Public Relations Department**
 	- Firstly, you'll have to fill in the recipents' emails using Excel in `pr_applicants.csv` file.
 	- Run `send_pr.py` file using the command `python3 send_pr.py` and follow the insturctions provided in the program.
 	- The program will show the progress while you're sending custom email to all the recipents. If everything runs smoothly it will show *Sent Invitation Successfully*, and you are good to leave the program.
-	 - Do NOT forget to run the command `python3 clear_csv.py` as soon as you finish your emailing process as it will delete all the *emails* in `applicants.csv` file.
+	 - Do NOT forget to run the command `python3 clear_csv.py` as soon as you finish your emailing process as it will delete all the *emails* in `pr_applicants.csv` file.
 
 4. For **Academic Deparment**
-	- Firstly, you'll have to fill in the applicants' names using Excel in `applicants.csv` file.
+	- Firstly, you'll have to fill in the applicants' names using Excel in `academic_applicants.csv` file.
 	- Add additional attachments in the folder named `attachments`.
 	- Run `send_academic.py` file using the command `python3 send_academic.py` and follow the insturctions provided in the program.
 	- Last but not least do NOT forget to run the command `python3 clear_csv.py` as soon as you finish your emailing process as it will delete all the *emails* in `applicants.csv` file.
