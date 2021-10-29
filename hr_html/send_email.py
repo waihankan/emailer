@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import yagmail
 import json
 import csv
@@ -53,25 +54,29 @@ def mail(invitation, result_type, data, email):
                 print(termcolor.colored("Sent Rejection Letter", "cyan"))
 
     except:
-        print(termcolor.colored("Error, email was not sent", "red", attrs=["bold"]))
+        print(termcolor.colored("Error, email was not sent", "red"))
 
 
 def confirm(email_list, invitation, result_type):
     print("----------------------------------------------------------------")
     print(termcolor.colored(f"Recipents: {email_list}", "yellow", attrs=["bold"]))
     print("----------------------------------------------------------------")
-    if invitation == "0":
-        print(termcolor.colored("Type of Letter: Invitation Letter", "blue"))
-    else:
-        if result_type == "0":
-            print(termcolor.colored("Type of Letter: Discord Invitation", "blue"))
-        else: 
-            print(termcolor.colored("Type of Letter: Rejection Letter", "blue"))
 
-    answer = ""
-    while answer not in ["y", "n"]:
-        answer = input("OK to push to continue [Y/N]? ").lower()
-    return answer == "y"
+    if len(email_list) == 0:
+        print(termcolor.colored("Please enter recipents in hr_applicants.csv", "red"))
+    else:
+        if invitation == "0":
+            print(termcolor.colored("Type of Letter: Invitation Letter", "blue"))
+        else:
+            if result_type == "0":
+                print(termcolor.colored("Type of Letter: Discord Invitation", "blue"))
+            else: 
+                print(termcolor.colored("Type of Letter: Rejection Letter", "blue"))
+
+        answer = ""
+        while answer not in ["y", "n"]:
+            answer = input("OK to push to continue [Y/N]? ").lower()
+        return answer == "y"
 
 
 if __name__ == "__main__":
@@ -81,25 +86,25 @@ if __name__ == "__main__":
     if invitation == "1":
         result_type = input("Press 0 for Discord Invitation, 1 for Rejection Letter: ")
         if (result_type != "0" and result_type != "1"):
-            print(termcolor.colored("Error", "red", attrs=["bold"]))
-            print(termcolor.colored("Abort due to wrong input", "red", attrs=["bold"]))
+            print(termcolor.colored("Error", "red"))
+            print(termcolor.colored("Abort due to wrong input", "red"))
             quit()
 
-    name_list, email_list, applicants = load_applicants("applicants.csv")
+    name_list, email_list, applicants = load_applicants("hr_applicants.csv")
 
     if (invitation == "0"):
         print("----------------------------------------------------------------")
-        position = input("Enter the Position of Applicants              : ")
-        doc_link = input("Enter the Google Document Link                : ")
-        title    = input("Enter the Interview Title                     : ")
-        date     = input("Enter the Interview Date (eg. October 10)     : ")
-        time     = input("Enter the Interview Time (eg. 2:00 to 3:00 pm): ")
+        position = input("Enter the Position of Applicants               : ")
+        doc_link = input("Enter the Google Document Link                 : ")
+        title    = input("Enter the Interview Title                      : ")
+        date     = input("Enter the Interview Date (eg. October 10)      : ")
+        time     = input("Enter the Interview Time (eg. 2:00 to 3:00 pm) : ")
         print("----------------------------------------------------------------")
-        print("Position     : ", position)
-        print("Document Link: ", doc_link)
-        print("Title        : ", title)
-        print("Date         : ", date)
-        print("Time         : ", time)
+        print("Position      : ", position)
+        print("Document Link : ", doc_link)
+        print("Title         : ", title)
+        print("Date          : ", date)
+        print("Time          : ", time)
 
         if confirm(email_list, invitation, result_type):
             # loop for each applicant
@@ -111,8 +116,11 @@ if __name__ == "__main__":
                 # load JSON file
                 data = load_json("jsonfile.json")
                 mail(invitation, result_type, data, email)
+            
+            print("===========================")
+            print(termcolor.colored("********* SUCCESS *********", "green", attrs=["bold"]))
         else:
-            print(termcolor.colored("Abort", "red", attrs=["bold"]))
+            print(termcolor.colored("Program Abort", "red"))
 
     elif (invitation == "1"):
         if confirm(email_list, invitation, result_type):
@@ -126,9 +134,11 @@ if __name__ == "__main__":
                 data = load_json("jsonfile.json")
                 mail(invitation, result_type, data, email)
 
-    else:
-        print(termcolor.colored("Abort due to wrong input", "red", attrs=["bold"]))
-        quit()
+            print("===========================")
+            print(termcolor.colored("********* SUCCESS *********", "green", attrs=["bold"]))
+        else:
+            print(termcolor.colored("Program Abort", "red"))
 
-    print("===========================")
-    print(termcolor.colored("********* SUCCESS *********", "green", attrs=["bold"]))
+    else:
+        print(termcolor.colored("Abort due to wrong input", "red"))
+        quit()

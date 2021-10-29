@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import yagmail
 import csv
 import termcolor
@@ -25,19 +26,22 @@ def send_mail(applicants, content):
 
         # Event Invitation
         yag.send(to=applicants, cc="cookieacademy2020@gmail.com", subject="Event Invitation", contents=content)
-        print(termcolor.colored("***** Sent Invitation Successfully *****", "magenta", attrs=["bold"]))
+        print(termcolor.colored("***** Sent Invitation Successfully *****", "green", attrs=["bold"]))
 
     except:
-        print(termcolor("Error, email was not sent", "red", attrs=["bold"]))
+        print(termcolor.colored("Error, email was not sent", "red"))
 
 
 def confirm(applicants):
-    print(termcolor.colored(f"Recipents: {applicants}", "yellow"))
+    print(termcolor.colored(f"Recipents: {applicants}", "yellow", attrs=["bold"]))
 
-    answer = ""
-    while answer not in ["y", "n"]:
-        answer = input("OK to push to continue [Y/N]? ").lower()
-    return answer == "y"
+    if len(applicants) == 0:
+        print(termcolor.colored("Please enter recipents in pr_applicants.csv", "red"))
+    else:
+        answer = ""
+        while answer not in ["y", "n"]:
+            answer = input("OK to push to continue [Y/N]? ").lower()
+        return answer == "y"
 
 
 if __name__ == "__main__":
@@ -58,4 +62,4 @@ if __name__ == "__main__":
     if confirm(applicants):
         send_mail(applicants, content)
     else:
-        print(termcolor.colored("Abort", "red", attrs=["bold"]))
+        print(termcolor.colored("Program Abort", "red"))
