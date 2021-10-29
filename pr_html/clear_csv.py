@@ -3,7 +3,7 @@
 import os
 
 try:
-    os.remove("applicants.csv")
+    os.remove("pr_applicants.csv")
 except:
     print("already removed applicants.csv")
 
