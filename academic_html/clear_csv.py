@@ -3,9 +3,9 @@
 import os
 
 try:
-    os.remove("applicants.csv")
+    os.remove("academic_applicants.csv")
 except:
-    print("already removed applicants.csv")
+    print("already removed academic_applicants.csv")
 
-file = open("applicants.csv", "w+")
+file = open("academic_applicants.csv", "w+")
 file.close()
