@@ -59,11 +59,11 @@ def mail(invitation, result_type, data, email):
 
 def confirm(email_list, invitation, result_type):
     print("----------------------------------------------------------------")
-    print(termcolor.colored(f"Recipents: {email_list}", "yellow", attrs=["bold"]))
+    print(termcolor.colored(f"Recipients: {email_list}", "yellow", attrs=["bold"]))
     print("----------------------------------------------------------------")
 
     if len(email_list) == 0:
-        print(termcolor.colored("Please enter recipents in hr_applicants.csv", "red"))
+        print(termcolor.colored("Please enter recipients in hr_applicants.csv", "red"))
     else:
         if invitation == "0":
             print(termcolor.colored("Type of Letter: Invitation Letter", "blue"))
